@@ -9,6 +9,7 @@ import TransferExecutorship from './modals/TransferExecutorship'
 import SettleDebts from './modals/SettleDebts'
 import DistributeInheritance from './modals/DistributeInheritance'
 import AddTrackedToken from './modals/AddTrackedToken'
+import RemoveTrackedToken from './modals/RemoveTrackedToken'
 import TransferOwnership from './modals/TransferOwnership'
 import ClaimEthShares from './modals/ClaimEthShares'
 import ClaimTokenShares from './modals/ClaimTokenShares'
@@ -161,10 +162,22 @@ export default class Actions extends React.Component {
                 this.setState({modal:"AddTrackedToken"})
               } else { this.setState({modal:null})}
               }}>
-              Register New Asset
+              Track a token
             </button>
           }
           {this.state.modal === "AddTrackedToken" && <AddTrackedToken hide={this.hide}/>}
+
+          {/* Remove Tracked Token Button */}
+          {(this.props.role === "Owner" || this.props.role === "Executor") &&
+            <button onClick={()=>{
+              if(this.state.modal !== "RemoveTrackedToken"){
+                this.setState({modal:"RemoveTrackedToken"})
+              } else { this.setState({modal:null})}
+              }}>
+              Stop tracking a token
+            </button>
+          }
+          {this.state.modal === "RemoveTrackedToken" && <RemoveTrackedToken hide={this.hide}/>}
 
           {/* Claim Eth Shares Button */}
           {this.props.role === "Beneficiary" &&
