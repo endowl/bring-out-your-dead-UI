@@ -1,3 +1,3 @@
-const address = "0xdac3794d1644D7cE73d098C19f33E7e10271b2bC"
+const address = "0x4d4ac3250d56160b08b79e7e2309930a6c4b35ed"
 
 module.exports = address

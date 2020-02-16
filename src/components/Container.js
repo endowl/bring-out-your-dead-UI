@@ -7,6 +7,7 @@ import UserRole from './UserRole'
 
 import { getOwner } from '../utils/getOwner'
 import { getRole } from '../utils/getRole'
+import { myAddress } from '../utils/myAddress'
 
 
 export default class Container extends React.Component {
@@ -15,6 +16,7 @@ export default class Container extends React.Component {
     this.state={
       data: [],
       owner: null,
+      address: null,
       role: null,
       error: null,
     }
@@ -26,6 +28,11 @@ export default class Container extends React.Component {
 
     console.log("provider:", provider)
     console.log("signer:", signer)
+
+    let selectedAddress = myAddress()
+    this.setState({
+      address: selectedAddress
+    })
 
     getOwner().then((res) => {
       this.setState({
@@ -55,7 +62,7 @@ export default class Container extends React.Component {
       }}>
         <EstateDetails owner={this.state.owner}/>
         <UserRole role={this.state.role}/>
-        <Actions role={this.state.role}/>
+        <Actions role={this.state.role} address={this.state.address}/>
       </div>
     )
   }

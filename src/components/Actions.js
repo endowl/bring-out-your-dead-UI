@@ -66,7 +66,7 @@ export default class Actions extends React.Component {
           }}>
             Change Beneficiary Address
           </button>
-          {this.state.modal === "ChangeBeneficiaryAddress" && <ChangeBeneficiaryAddress hide={this.hide}/>}
+          {this.state.modal === "ChangeBeneficiaryAddress" && <ChangeBeneficiaryAddress role={this.props.role} address={this.props.address} hide={this.hide}/>}
 
 
           {/* Change Oracle Button */}
