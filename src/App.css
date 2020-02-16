@@ -1,3 +1,5 @@
 button {
   border: 1px solid grey;
+  font-size: large;
+    margin: 3px;
 }

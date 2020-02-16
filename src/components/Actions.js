@@ -42,6 +42,7 @@ export default class Actions extends React.Component {
         <div className="actions_title">Possible Actions</div>
         <div className="actions_buttons" style={{
           display: "flex",
+          flexDirection: "column",
           flexWrap: "wrap",
           justifyContent: "space-around",
         }}
