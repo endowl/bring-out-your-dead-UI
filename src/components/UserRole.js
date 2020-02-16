@@ -10,7 +10,7 @@ export default class UserRole extends React.Component {
       let role = "";
 
       if(!this.props.role){
-        role = "Executor"
+        role = "You don't have a role in this will"
       } else {
         role = this.props.role
       }
