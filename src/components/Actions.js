@@ -1,6 +1,7 @@
 import React from 'react';
 import AddBeneficiary from './modals/AddBeneficiary'
 import ChangeBeneficiaryAddress from './modals/ChangeBeneficiaryAddress'
+import ChangeOracle from './modals/ChangeOracle'
 
 export default class Actions extends React.Component {
   constructor(props){
@@ -51,7 +52,15 @@ export default class Actions extends React.Component {
           </button>
             {this.state.modal === "ChangeBeneficiaryAddress" && <ChangeBeneficiaryAddress hide={this.hide}/>}
 
-          <button onClick={()=>alert("Change Oracle")}>Change Oracle</button>
+            <button onClick={()=>{
+              if(this.state.modal !== "ChangeOracle"){
+                this.setState({modal:"ChangeOracle"})
+              } else { this.setState({modal:null})}
+            }}>
+              Change Oracle
+            </button>
+              {this.state.modal === "ChangeOracle" && <ChangeOracle hide={this.hide}/>}
+
           <button onClick={()=>alert("I'm not dead yet!")}>I'm not dead yet!</button>
           <button onClick={()=>alert("Remove Beneficiary")}>Remove Beneficiary</button>
           <button onClick={()=>alert("Appoint Executor")}>Appoint Executor</button>
