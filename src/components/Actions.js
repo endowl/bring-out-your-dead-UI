@@ -1,6 +1,13 @@
 import React from 'react';
+import AddBeneficiary from './modals/AddBeneficiary'
 
 export default class Actions extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      modal: null
+    }
+  }
 
   render(){
     return(
@@ -20,7 +27,14 @@ export default class Actions extends React.Component {
           justifyContent: "space-around",
         }}
         >
-          <button onClick={()=>alert("Add Beneficiary")}>Add Beneficiary</button>
+          <button onClick={()=>{
+            if(this.state.modal !== "AddBeneficiary"){
+              this.setState({modal:"AddBeneficiary"})
+            } else { this.setState({modal:null})}
+            }}>
+            Add Beneficiary
+          </button>
+          {this.state.modal === "AddBeneficiary" && <AddBeneficiary/>}
           <button onClick={()=>alert("Change Beneficiary")}>Change Beneficiary</button>
           <button onClick={()=>alert("Change Oracle")}>Change Oracle</button>
           <button onClick={()=>alert("I'm not dead yet!")}>I'm not dead yet!</button>
@@ -29,6 +43,8 @@ export default class Actions extends React.Component {
           <button onClick={()=>alert("Transfer Executorship")}>Transfer Executorship</button>
           <button onClick={()=>alert("Settle Debts")}>Settle Debts</button>
           <button onClick={()=>alert("Distribute Inheritance")}>Distribute Inheritance</button>
+          <button onClick={()=>alert("Register a new asset")}>Register a new asset</button>
+
         </div>
       </div>
     )

@@ -21,7 +21,7 @@ export default class EstateDetails extends React.Component {
             : this.props.owner.substr(0,6) + "..." + this.props.owner.substr(38)
           }
         </div>
-        <div className="estateDetails_posessions">Possessions</div>
+        <div className="estateDetails_posessions">Registered assets in estate</div>
         <div className="estateDetails_defiDebts">DeFi Debts</div>
       </div>
     )
