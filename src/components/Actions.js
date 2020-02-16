@@ -1,5 +1,6 @@
 import React from 'react';
 import AddBeneficiary from './modals/AddBeneficiary'
+import ChangeBeneficiaryAddress from './modals/ChangeBeneficiaryAddress'
 
 export default class Actions extends React.Component {
   constructor(props){
@@ -7,6 +8,11 @@ export default class Actions extends React.Component {
     this.state = {
       modal: null
     }
+    this.hide = this.hide.bind(this)
+  }
+
+  hide = () => {
+    this.setState({modal: null})
   }
 
   render(){
@@ -34,8 +40,17 @@ export default class Actions extends React.Component {
             }}>
             Add Beneficiary
           </button>
-          {this.state.modal === "AddBeneficiary" && <AddBeneficiary/>}
-          <button onClick={()=>alert("Change Beneficiary")}>Change Beneficiary</button>
+            {this.state.modal === "AddBeneficiary" && <AddBeneficiary hide={this.hide}/>}
+
+          <button onClick={()=>{
+            if(this.state.modal !== "ChangeBeneficiaryAddress"){
+              this.setState({modal:"ChangeBeneficiaryAddress"})
+            } else { this.setState({modal:null})}
+          }}>
+            Change Beneficiary Address
+          </button>
+            {this.state.modal === "ChangeBeneficiaryAddress" && <ChangeBeneficiaryAddress hide={this.hide}/>}
+
           <button onClick={()=>alert("Change Oracle")}>Change Oracle</button>
           <button onClick={()=>alert("I'm not dead yet!")}>I'm not dead yet!</button>
           <button onClick={()=>alert("Remove Beneficiary")}>Remove Beneficiary</button>

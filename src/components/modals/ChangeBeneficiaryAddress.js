@@ -21,14 +21,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function AddBeneficiary(props) {
+export default function ChangeBeneficiaryAddress(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Paper elevation={3}>
+        <div>Select beneficiary</div>
+        <div>Old Address</div>
         <label>
-          Beneficiary Address
+          New Address
         </label>
         <input className={classes.input} type="text" name="Beneficiary Address"/>
 
