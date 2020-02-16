@@ -1,6 +1,23 @@
 import React from 'react';
+import { trackedTokens } from '../utils/trackedTokens'
+
+let tokenAddresses = []
 
 export default class EstateDetails extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      trackedTokens: null
+    }
+  }
+
+  async componentDidMount(){
+    tokenAddresses = await trackedTokens()
+    console.log("tokenAddresses", tokenAddresses)
+    this.setState({
+      trackedTokens: tokenAddresses
+    })
+  }
 
   render(){
     return(
@@ -22,6 +39,7 @@ export default class EstateDetails extends React.Component {
           }
         </div>
         <div className="estateDetails_posessions">Registered assets in estate</div>
+        {this.state.trackedTokens && this.state.trackedTokens.map((e,i)=><div key={i}>{e}</div>)}
         <div className="estateDetails_defiDebts">DeFi Debts</div>
       </div>
     )
