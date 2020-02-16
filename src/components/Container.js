@@ -55,7 +55,7 @@ export default class Container extends React.Component {
       }}>
         <EstateDetails owner={this.state.owner}/>
         <UserRole role={this.state.role}/>
-        <Actions/>
+        <Actions role={this.state.role}/>
       </div>
     )
   }
