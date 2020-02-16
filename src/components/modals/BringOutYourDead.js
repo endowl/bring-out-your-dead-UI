@@ -57,10 +57,10 @@ export default class BringOutYourDead extends React.Component {
             if(this.state.liveliness === 2){
               bringOutYourDead().then((res)=>{
                 console.log("bringOutYourDead",res)
-                alert("The uncertainty period has passed")
-              }).catch(
-                alert("The uncertainty period has not passed")
-              )
+
+              }).catch((err)=>{
+                  console.log(err.message)
+              })
             }
 
             this.props.hide()

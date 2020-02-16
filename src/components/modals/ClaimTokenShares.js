@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import { claimTokenShares } from '../../utils/claimTokenShares'
 import { getTrackedTokens } from '../../utils/getTrackedTokens'
+import { claimTokenSharesAsEth } from '../../utils/claimTokenSharesAsEth'
 
 const styles = {
   root: {
@@ -30,11 +31,7 @@ export default class ClaimTokenShares extends React.Component{
   }
 
   componentDidMount(){
-    // get trackedTokens
-    getTrackedTokens().then((res)=>{
-      console.log("trackedTokens:", res)
-      this.setState({tokenAddresses: res})
-    }).catch(alert("No tokens have been registered"))
+
   }
 
   render(){
@@ -45,14 +42,29 @@ export default class ClaimTokenShares extends React.Component{
             Available tokens you can claim
           </label>
           <select>
-          {this.state.tokenAddress && this.state.tokenAddresses.map(e=> <option value={e}>e</option>)}
+          {this.props.trackedTokens && this.props.trackedTokens.map((e,i)=> <option key={i} value={e}>{e}</option>)}
           </select>
 
           <button onClick={()=>{
             // call AddBeneficiary on contract, notify of success, then hide modal
+            claimTokenShares(this.props.trackedTokens[0]).then((res)=>{
+              console.log("res",res)
+              alert("Your claim is being processed.")
+            })
             this.props.hide()
           }}>
-            Claim your inheritance
+            Claim Token Shares
+          </button>
+          <div>-OR-</div>
+          <button onClick={()=>{
+            // call AddBeneficiary on contract, notify of success, then hide modal
+            claimTokenSharesAsEth(this.props.trackedTokens[0]).then((res)=>{
+              console.log("res",res)
+              alert("Your claim is being processed.")
+            })
+            this.props.hide()
+          }}>
+            Convert to Eth through Kyber
           </button>
         </Paper>
       </div>

@@ -202,7 +202,7 @@ export default class Actions extends React.Component {
               Claim Token Shares
             </button>
           }
-          {this.state.modal === "ClaimTokenShares" && <ClaimTokenShares hide={this.hide}/>}
+          {this.state.modal === "ClaimTokenShares" && <ClaimTokenShares trackedTokens={this.props.trackedTokens} hide={this.hide}/>}
 
 
           {/* Transfer Ownership Button */}

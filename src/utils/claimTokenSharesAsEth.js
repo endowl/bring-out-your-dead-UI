@@ -11,9 +11,9 @@ const overrides = {
 
 const contract = new ethers.Contract(contractAddress, abi, signer)
 
-
-export async function bringOutYourDead(){
-    const tx = await contract.bringOutYourDead()
+export async function claimTokenSharesAsEth(tokenAddress){
+    console.log("tokenAddress", typeof tokenAddress, tokenAddress)
+    const tx = await contract.claimTokenSharesAsEth(tokenAddress, overrides)
 
     return tx;
 }

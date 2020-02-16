@@ -8,6 +8,7 @@ import UserRole from './UserRole'
 import { getOwner } from '../utils/getOwner'
 import { getRole } from '../utils/getRole'
 import { myAddress } from '../utils/myAddress'
+import { trackedTokens } from '../utils/trackedTokens'
 
 
 export default class Container extends React.Component {
@@ -18,6 +19,7 @@ export default class Container extends React.Component {
       owner: null,
       address: null,
       role: null,
+      trackedTokens: null,
       error: null,
     }
   }
@@ -33,6 +35,13 @@ export default class Container extends React.Component {
     this.setState({
       address: selectedAddress
     })
+    trackedTokens().then((res)=>{
+
+      console.log("tokenAddresses", res)
+      this.setState({
+        trackedTokens: res
+      })
+    }).catch((err)=>alert(err.message))
 
     getOwner().then((res) => {
       this.setState({
@@ -60,9 +69,9 @@ export default class Container extends React.Component {
         flexDirection: "column",
         alignItems: "center",
       }}>
-        <EstateDetails owner={this.state.owner}/>
+        <EstateDetails owner={this.state.owner} trackedTokens={this.state.trackedTokens}/>
         <UserRole role={this.state.role}/>
-        <Actions role={this.state.role} address={this.state.address}/>
+        <Actions role={this.state.role} address={this.state.address} trackedTokens={this.state.trackedTokens}/>
       </div>
     )
   }

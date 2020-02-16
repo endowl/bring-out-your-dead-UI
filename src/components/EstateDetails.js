@@ -8,19 +8,11 @@ export default class EstateDetails extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      trackedTokens: null,
       liveliness: null,
     }
   }
 
   componentDidMount(){
-    trackedTokens().then((res)=>{
-
-      console.log("tokenAddresses", res)
-      this.setState({
-        trackedTokens: res
-      })
-    }).catch((err)=>alert(err.message))
 
     checkLiveliness().then((res)=>{
       console.log(res)
@@ -34,7 +26,7 @@ export default class EstateDetails extends React.Component {
         })
       } else {
         this.setState({
-          liveliness: 'WELLBEING UNCERTAIN'
+          liveliness: 'UNCERTAIN - Eligible for Verification of Death'
         })
       }
     }).catch(err=>alert(err.message))
@@ -64,7 +56,7 @@ export default class EstateDetails extends React.Component {
           : <div>Consulting the life oracle...</div>
         }
         <div className="estateDetails_posessions">Registered assets in estate</div>
-        {this.state.trackedTokens && this.state.trackedTokens.map((e,i)=><div key={i}>{e}</div>)}
+        {this.props.trackedTokens && this.props.trackedTokens.map((e,i)=><div key={i}>{e}</div>)}
         {/* <div className="estateDetails_defiDebts">DeFi Debts</div> */}
       </div>
     )
