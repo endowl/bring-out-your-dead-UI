@@ -46,7 +46,7 @@ export default class Actions extends React.Component {
         }}
         >
           {/* Add Beneficiary Button */}
-          {this.props.role === "Owner" || this.props.role === "Executor" &&
+          {(this.props.role === "Owner" || this.props.role === "Executor") &&
             <button onClick={()=>{
               if(this.state.modal !== "AddBeneficiary"){
                 this.setState({modal:"AddBeneficiary"})
@@ -93,7 +93,7 @@ export default class Actions extends React.Component {
           {this.state.modal === "ImNotDead" && <ImNotDead hide={this.hide}/>}
 
           {/* Remove Beneficiary Button */}
-          {this.props.role === "Owner" || this.props.role === "Executor" &&
+          {(this.props.role === "Owner" || this.props.role === "Executor") &&
             <button onClick={()=>{
               if(this.state.modal !== "RemoveBeneficiary"){
                 this.setState({modal:"RemoveBeneficiary"})
@@ -117,7 +117,7 @@ export default class Actions extends React.Component {
           {this.state.modal === "AppointExecutor" && <AppointExecutor hide={this.hide}/>}
 
           {/* Transfer Executorship Button */}
-          {this.props.role === "Owner" || this.props.role === "Executor" &&
+          {(this.props.role === "Owner" || this.props.role === "Executor") &&
             <button onClick={()=>{
               if(this.state.modal !== "TransferExecutorship"){
                 this.setState({modal:"TransferExecutorship"})
@@ -130,7 +130,7 @@ export default class Actions extends React.Component {
 
 
           {/* Settle Debts Button */}
-          {this.props.role === "Owner" || this.props.role === "Executor" &&
+          {(this.props.role === "Owner" || this.props.role === "Executor") &&
             <button onClick={()=>{
               if(this.state.modal !== "SettleDebts"){
                 this.setState({modal:"SettleDebts"})
@@ -155,7 +155,7 @@ export default class Actions extends React.Component {
           {this.state.modal === "DistributeInheritance" && <DistributeInheritance hide={this.hide}/>}
 
           {/* Register New Asset Button */}
-          {this.props.role === "Owner" || this.props.role === "Executor" &&
+          {(this.props.role === "Owner" || this.props.role === "Executor") &&
             <button onClick={()=>{
               if(this.state.modal !== "RegisterNewAsset"){
                 this.setState({modal:"RegisterNewAsset"})
@@ -215,7 +215,7 @@ export default class Actions extends React.Component {
           {this.state.modal === "BringOutYourDead" && <BringOutYourDead hide={this.hide}/>}
 
           {/* Change Benneficiary Shares Button */}
-          {this.props.role === "Owner" || this.props.role === "Executor" &&
+          {(this.props.role === "Owner" || this.props.role === "Executor") &&
             <button onClick={()=>{
               if(this.state.modal !== "ChangeBeneficiaryShares"){
                 this.setState({modal:"ChangeBeneficiaryShares"})
