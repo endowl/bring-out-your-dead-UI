@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function RegisterNewAsset(props) {
+export default function AddTrackedToken(props) {
   const classes = useStyles();
 
   return (

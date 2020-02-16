@@ -8,7 +8,7 @@ import AppointExecutor from './modals/AppointExecutor'
 import TransferExecutorship from './modals/TransferExecutorship'
 import SettleDebts from './modals/SettleDebts'
 import DistributeInheritance from './modals/DistributeInheritance'
-import RegisterNewAsset from './modals/RegisterNewAsset'
+import AddTrackedToken from './modals/AddTrackedToken'
 import TransferOwnership from './modals/TransferOwnership'
 import ClaimEthShares from './modals/ClaimEthShares'
 import ClaimTokenShares from './modals/ClaimTokenShares'
@@ -154,17 +154,17 @@ export default class Actions extends React.Component {
           }
           {this.state.modal === "DistributeInheritance" && <DistributeInheritance hide={this.hide}/>}
 
-          {/* Register New Asset Button */}
+          {/* Add Tracked Token Button */}
           {(this.props.role === "Owner" || this.props.role === "Executor") &&
             <button onClick={()=>{
-              if(this.state.modal !== "RegisterNewAsset"){
-                this.setState({modal:"RegisterNewAsset"})
+              if(this.state.modal !== "AddTrackedToken"){
+                this.setState({modal:"AddTrackedToken"})
               } else { this.setState({modal:null})}
               }}>
               Register New Asset
             </button>
           }
-          {this.state.modal === "RegisterNewAsset" && <RegisterNewAsset hide={this.hide}/>}
+          {this.state.modal === "AddTrackedToken" && <AddTrackedToken hide={this.hide}/>}
 
           {/* Claim Eth Shares Button */}
           {this.props.role === "Beneficiary" &&
