@@ -62,7 +62,7 @@ export default class Container extends React.Component {
       <div
         className="container"
         style={{
-        backgroundColor: "blue",
+        backgroundColor: "dimgray",
         height: "100vh",
         width: "100vw",
         display: "flex",
