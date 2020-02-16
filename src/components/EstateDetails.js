@@ -1,5 +1,6 @@
 import React from 'react';
 import { trackedTokens } from '../utils/trackedTokens'
+import { checkLiveliness } from '../utils/checkLiveliness'
 
 let tokenAddresses = []
 
@@ -7,16 +8,36 @@ export default class EstateDetails extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      trackedTokens: null
+      trackedTokens: null,
+      liveliness: null,
     }
   }
 
-  async componentDidMount(){
-    tokenAddresses = await trackedTokens()
-    console.log("tokenAddresses", tokenAddresses)
-    this.setState({
-      trackedTokens: tokenAddresses
-    })
+  componentDidMount(){
+    trackedTokens().then((res)=>{
+
+      console.log("tokenAddresses", res)
+      this.setState({
+        trackedTokens: res
+      })
+    }).catch((err)=>alert(err.message))
+
+    checkLiveliness().then((res)=>{
+      console.log(res)
+      if(res == 0){
+        this.setState({
+          liveliness: "LIVING"
+        })
+      } else if (res == 1) {
+        this.setState({
+          liveliness: "DECEASED"
+        })
+      } else {
+        this.setState({
+          liveliness: 'WELLBEING UNCERTAIN'
+        })
+      }
+    }).catch(err=>alert(err.message))
   }
 
   render(){
@@ -38,9 +59,13 @@ export default class EstateDetails extends React.Component {
             : this.props.owner.substr(0,6) + "..." + this.props.owner.substr(38)
           }
         </div>
+        {this.state.liveliness
+          ? <div>{this.state.liveliness}</div>
+          : <div>Consulting the life oracle...</div>
+        }
         <div className="estateDetails_posessions">Registered assets in estate</div>
         {this.state.trackedTokens && this.state.trackedTokens.map((e,i)=><div key={i}>{e}</div>)}
-        <div className="estateDetails_defiDebts">DeFi Debts</div>
+        {/* <div className="estateDetails_defiDebts">DeFi Debts</div> */}
       </div>
     )
   }
