@@ -25,8 +25,12 @@ export default class Container extends React.Component {
     console.log("signer:", signer)
 
     getRole().then((value) => {
-        console.log(value);
+        console.log("getRole returns",value);
+        this.setState({
+          role: value
+        })
     });
+
   }
 
   render(){
@@ -42,7 +46,7 @@ export default class Container extends React.Component {
         alignItems: "center",
       }}>
         <EstateDetails/>
-        <UserRole/>
+        <UserRole role={this.state.role}/>
         <Actions/>
       </div>
     )
