@@ -2,6 +2,13 @@ import React from 'react';
 import AddBeneficiary from './modals/AddBeneficiary'
 import ChangeBeneficiaryAddress from './modals/ChangeBeneficiaryAddress'
 import ChangeOracle from './modals/ChangeOracle'
+import ImNotDead from './modals/ImNotDead'
+import RemoveBeneficiary from './modals/RemoveBeneficiary'
+import AppointExecutor from './modals/AppointExecutor'
+import TransferExecutorship from './modals/TransferExecutorship'
+import SettleDebts from './modals/SettleDebts'
+import DistributeInheritance from './modals/DistributeInheritance'
+import RegisterNewAsset from './modals/RegisterNewAsset'
 
 export default class Actions extends React.Component {
   constructor(props){
@@ -26,7 +33,6 @@ export default class Actions extends React.Component {
         flexDirection: "column",
         alignItems: "center",
       }}>
-
         <div className="actions_title">Possible Actions</div>
         <div className="actions_buttons" style={{
           display: "flex",
@@ -34,6 +40,7 @@ export default class Actions extends React.Component {
           justifyContent: "space-around",
         }}
         >
+          {/* Add Beneficiary Button */}
           <button onClick={()=>{
             if(this.state.modal !== "AddBeneficiary"){
               this.setState({modal:"AddBeneficiary"})
@@ -41,8 +48,9 @@ export default class Actions extends React.Component {
             }}>
             Add Beneficiary
           </button>
-            {this.state.modal === "AddBeneficiary" && <AddBeneficiary hide={this.hide}/>}
+          {this.state.modal === "AddBeneficiary" && <AddBeneficiary hide={this.hide}/>}
 
+          {/* Change Beneficiary Button */}
           <button onClick={()=>{
             if(this.state.modal !== "ChangeBeneficiaryAddress"){
               this.setState({modal:"ChangeBeneficiaryAddress"})
@@ -50,24 +58,90 @@ export default class Actions extends React.Component {
           }}>
             Change Beneficiary Address
           </button>
-            {this.state.modal === "ChangeBeneficiaryAddress" && <ChangeBeneficiaryAddress hide={this.hide}/>}
+          {this.state.modal === "ChangeBeneficiaryAddress" && <ChangeBeneficiaryAddress hide={this.hide}/>}
 
-            <button onClick={()=>{
-              if(this.state.modal !== "ChangeOracle"){
-                this.setState({modal:"ChangeOracle"})
-              } else { this.setState({modal:null})}
+
+          {/* Change Oracle Button */}
+          <button onClick={()=>{
+            if(this.state.modal !== "ChangeOracle"){
+              this.setState({modal:"ChangeOracle"})
+            } else { this.setState({modal:null})}
+          }}>
+            Change Oracle
+          </button>
+          {this.state.modal === "ChangeOracle" && <ChangeOracle hide={this.hide}/>}
+
+          {/* I'm Not Dead Yet Button */}
+          <button onClick={()=>{
+            if(this.state.modal !== "ImNotDead"){
+              this.setState({modal:"ImNotDead"})
+            } else { this.setState({modal:null})}
+          }}>
+            I'm Not Dead Yet!
+          </button>
+          {this.state.modal === "ImNotDead" && <ImNotDead hide={this.hide}/>}
+
+          {/* Remove Beneficiary Button */}
+          <button onClick={()=>{
+            if(this.state.modal !== "RemoveBeneficiary"){
+              this.setState({modal:"RemoveBeneficiary"})
+            } else { this.setState({modal:null})}
+          }}>
+            Remove Beneficiary
+          </button>
+          {this.state.modal === "RemoveBeneficiary" && <RemoveBeneficiary hide={this.hide}/>}
+
+          {/* Appoint Executor Button */}
+          <button onClick={()=>{
+            if(this.state.modal !== "AppointExecutor"){
+              this.setState({modal:"AppointExecutor"})
+            } else { this.setState({modal:null})}
+          }}>
+            Appoint Executor
+          </button>
+          {this.state.modal === "AppointExecutor" && <AppointExecutor hide={this.hide}/>}
+
+          {/* Transfer Executorship Button */}
+          <button onClick={()=>{
+            if(this.state.modal !== "TransferExecutorship"){
+              this.setState({modal:"TransferExecutorship"})
+            } else { this.setState({modal:null})}
+          }}>
+            Transfer Executorship
+          </button>
+          {this.state.modal === "TransferExecutorship" && <TransferExecutorship hide={this.hide}/>}
+
+
+          {/* Settle Debts Button */}
+          <button onClick={()=>{
+            if(this.state.modal !== "SettleDebts"){
+              this.setState({modal:"SettleDebts"})
+            } else { this.setState({modal:null})}
+          }}>
+            Settle Debts
+          </button>
+          {this.state.modal === "SettleDebts" && <SettleDebts hide={this.hide}/>}
+
+
+          {/* Distribute Inheritance Button */}
+          <button onClick={()=>{
+            if(this.state.modal !== "DistributeInheritance"){
+              this.setState({modal:"DistributeInheritance"})
+            } else { this.setState({modal:null})}
+          }}>
+            Distribute Inheritance
+          </button>
+          {this.state.modal === "DistributeInheritance" && <DistributeInheritance hide={this.hide}/>}
+
+          {/* Register New Asset Button */}
+          <button onClick={()=>{
+            if(this.state.modal !== "RegisterNewAsset"){
+              this.setState({modal:"RegisterNewAsset"})
+            } else { this.setState({modal:null})}
             }}>
-              Change Oracle
-            </button>
-              {this.state.modal === "ChangeOracle" && <ChangeOracle hide={this.hide}/>}
-
-          <button onClick={()=>alert("I'm not dead yet!")}>I'm not dead yet!</button>
-          <button onClick={()=>alert("Remove Beneficiary")}>Remove Beneficiary</button>
-          <button onClick={()=>alert("Appoint Executor")}>Appoint Executor</button>
-          <button onClick={()=>alert("Transfer Executorship")}>Transfer Executorship</button>
-          <button onClick={()=>alert("Settle Debts")}>Settle Debts</button>
-          <button onClick={()=>alert("Distribute Inheritance")}>Distribute Inheritance</button>
-          <button onClick={()=>alert("Register a new asset")}>Register a new asset</button>
+            Register New Asset
+          </button>
+          {this.state.modal === "RegisterNewAsset" && <RegisterNewAsset hide={this.hide}/>}
 
         </div>
       </div>

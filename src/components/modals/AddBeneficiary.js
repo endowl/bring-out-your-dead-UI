@@ -36,7 +36,7 @@ export default function AddBeneficiary(props) {
           // call AddBeneficiary on contract, notify of success, then hide modal
           props.hide()
         }}>
-          Submit
+          Add Beneficiary
         </button>
       </Paper>
     </div>

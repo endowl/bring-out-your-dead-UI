@@ -21,23 +21,22 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ChangeOracle(props) {
+export default function RegisterNewAsset(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Paper elevation={3}>
-        <div>Old Oracle</div>
         <label>
-          New Oracle
+          Register New Asset
         </label>
-        <input className={classes.input} type="text" name="New Oracle"/>
+        <input className={classes.input} type="text" name="Asset Address"/>
 
         <button onClick={()=>{
           // call AddBeneficiary on contract, notify of success, then hide modal
           props.hide()
         }}>
-          Submit this change
+          Register this asset
         </button>
       </Paper>
     </div>

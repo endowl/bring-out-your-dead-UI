@@ -38,7 +38,7 @@ export default function ChangeBeneficiaryAddress(props) {
           // call AddBeneficiary on contract, notify of success, then hide modal
           props.hide()
         }}>
-          Submit
+          Submit this change
         </button>
       </Paper>
     </div>

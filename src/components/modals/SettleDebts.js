@@ -21,23 +21,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ChangeOracle(props) {
+export default function SettleDebts(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Paper elevation={3}>
-        <div>Old Oracle</div>
         <label>
-          New Oracle
+          Settle All Debts
         </label>
-        <input className={classes.input} type="text" name="New Oracle"/>
 
         <button onClick={()=>{
           // call AddBeneficiary on contract, notify of success, then hide modal
           props.hide()
         }}>
-          Submit this change
+          Execute debt settlement
         </button>
       </Paper>
     </div>

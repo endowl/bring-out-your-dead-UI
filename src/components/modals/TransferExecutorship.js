@@ -21,23 +21,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ChangeOracle(props) {
+export default function TransferExecutorship(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Paper elevation={3}>
-        <div>Old Oracle</div>
+        <div>Previous Executor Address</div>
         <label>
-          New Oracle
+          New Address
         </label>
-        <input className={classes.input} type="text" name="New Oracle"/>
+        <input className={classes.input} type="text" name="Executor Address"/>
 
         <button onClick={()=>{
           // call AddBeneficiary on contract, notify of success, then hide modal
           props.hide()
         }}>
-          Submit this change
+          Transfer executorship to this address
         </button>
       </Paper>
     </div>

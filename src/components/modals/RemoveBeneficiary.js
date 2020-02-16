@@ -21,23 +21,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ChangeOracle(props) {
+export default function RemoveBeneficiary(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Paper elevation={3}>
-        <div>Old Oracle</div>
-        <label>
-          New Oracle
-        </label>
-        <input className={classes.input} type="text" name="New Oracle"/>
+        <div>Select beneficiary</div>
+        <div>Old Address</div>
 
         <button onClick={()=>{
           // call AddBeneficiary on contract, notify of success, then hide modal
           props.hide()
         }}>
-          Submit this change
+          Remove Beneficiary
         </button>
       </Paper>
     </div>
