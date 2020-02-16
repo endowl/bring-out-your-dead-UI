@@ -9,6 +9,9 @@ import TransferExecutorship from './modals/TransferExecutorship'
 import SettleDebts from './modals/SettleDebts'
 import DistributeInheritance from './modals/DistributeInheritance'
 import RegisterNewAsset from './modals/RegisterNewAsset'
+import TransferOwnership from './modals/TransferOwnership'
+import ClaimEthShares from './modals/ClaimEthShares'
+import ClaimTokenShares from './modals/ClaimTokenShares'
 
 export default class Actions extends React.Component {
   constructor(props){
@@ -142,6 +145,40 @@ export default class Actions extends React.Component {
             Register New Asset
           </button>
           {this.state.modal === "RegisterNewAsset" && <RegisterNewAsset hide={this.hide}/>}
+
+          {/* Claim Eth Shares Button */}
+          <button onClick={()=>{
+            if(this.state.modal !== "ClaimEthShares"){
+              this.setState({modal:"ClaimEthShares"})
+            } else { this.setState({modal:null})}
+            }}>
+            Claim Ether Shares
+          </button>
+          {this.state.modal === "ClaimEthShares" && <ClaimEthShares hide={this.hide}/>}
+
+
+          {/* Claim Token Shares Button */}
+          <button onClick={()=>{
+            if(this.state.modal !== "ClaimTokenShares"){
+              this.setState({modal:"ClaimTokenShares"})
+            } else { this.setState({modal:null})}
+            }}>
+            Claim Token Shares
+          </button>
+          {this.state.modal === "ClaimTokenShares" && <ClaimTokenShares hide={this.hide}/>}
+
+
+          {/* Transfer Ownership Button */}
+          <button onClick={()=>{
+            if(this.state.modal !== "TransferOwnership"){
+              this.setState({modal:"TransferOwnership"})
+            } else { this.setState({modal:null})}
+            }}>
+            Transfer Ownership
+          </button>
+          {this.state.modal === "TransferOwnership" && <TransferOwnership hide={this.hide}/>}
+
+
 
         </div>
       </div>
