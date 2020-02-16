@@ -1,13 +1,9 @@
 import { ethers, Contract, Wallet, getDefaultProvider } from 'ethers'
 import assert from 'assert'
 import abi from '../abi/abi'
+import contractAddress from '../abi/address'
 
-// const provider = getDefaultProvider('ropsten')
 let provider = new ethers.providers.Web3Provider(window.web3.currentProvider);
-
-// const wallet = new Wallet(privateKey, provider)
-
-const contractAddress = "0xdac3794d1644D7cE73d098C19f33E7e10271b2bC"
 
 const contract = new ethers.Contract(contractAddress, abi, provider)
 
@@ -15,12 +11,23 @@ export async function getRole(){
     let role
 
     let executor = await contract.executor()
+    let owner = await contract.owner()
+    let selectedAddress = provider._web3Provider.selectedAddress
+    let beneficiaryShares = await contract.beneficiaryShares(selectedAddress)
 
-    console.log(executor)
-    console.log(provider._web3Provider.selectedAddress)
-    executor.toLowerCase() === provider._web3Provider.selectedAddress.toLowerCase()
-    ? role = "Executor"
-    : role = "none"
+    switch(true){
+        case executor.toLowerCase() === selectedAddress.toLowerCase():
+            role = "Executor"
+            break;
+        case beneficiaryShares > 0:
+            role = "Beneficiary"
+            break;
+        case owner.toLowerCase() === selectedAddress.toLowerCase():
+            role = "Owner"
+            break;
+        default:
+            role = "No role detected"
+    }
 
     return role;
 }

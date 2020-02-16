@@ -15,7 +15,12 @@ export default class EstateDetails extends React.Component {
 
       }}>
         <div className="estateDetails_title">Estate Details</div>
-        <div className="estateDetails_decedantName">Dead Person</div>
+        <div className="estateDetails_decedantName">
+          {!this.props.owner
+            ? "loading..."
+            : this.props.owner.substr(0,6) + "..." + this.props.owner.substr(38)
+          }
+        </div>
         <div className="estateDetails_posessions">Possessions</div>
         <div className="estateDetails_defiDebts">DeFi Debts</div>
       </div>

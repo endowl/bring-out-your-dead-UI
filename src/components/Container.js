@@ -1,17 +1,20 @@
 import React from 'react'
+import { ethers } from 'ethers'
+
 import Actions from './Actions'
 import EstateDetails from './EstateDetails'
 import UserRole from './UserRole'
 
-import { ethers } from 'ethers'
-
+import { getOwner } from '../utils/getOwner'
 import { getRole } from '../utils/getRole'
+
 
 export default class Container extends React.Component {
   constructor(props){
     super(props)
     this.state={
       data: [],
+      owner: null,
       role: null,
       error: null,
     }
@@ -24,10 +27,15 @@ export default class Container extends React.Component {
     console.log("provider:", provider)
     console.log("signer:", signer)
 
-    getRole().then((value) => {
-        console.log("getRole returns",value);
+    getOwner().then((res) => {
+      this.setState({
+        owner: res
+      })
+    })
+
+    getRole().then((res) => {
         this.setState({
-          role: value
+          role: res
         })
     });
 
@@ -45,7 +53,7 @@ export default class Container extends React.Component {
         flexDirection: "column",
         alignItems: "center",
       }}>
-        <EstateDetails/>
+        <EstateDetails owner={this.state.owner}/>
         <UserRole role={this.state.role}/>
         <Actions/>
       </div>
